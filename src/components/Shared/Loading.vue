@@ -2,7 +2,7 @@
   <v-progress-circular
     :size="60"
     :width="5"
-    :color="[storeThemeSwitch.darkMode ? 'white' : 'blue-grey-darken-4']"
+    :color="[!storeThemeSwitch.darkMode ? 'white' : 'blue-grey-darken-4']"
     indeterminate
   ></v-progress-circular>
 </template>

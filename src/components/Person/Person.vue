@@ -13,7 +13,7 @@
 
         <v-img v-else src="@/assets/noImage.png"></v-img>
 
-        <div class="pa-3" :class="[storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
+        <div class="pa-3" :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
           <div class="subtitle-1 truncate">
             {{ person?.name }}
           </div>

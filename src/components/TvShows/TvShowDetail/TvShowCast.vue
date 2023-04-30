@@ -9,7 +9,7 @@
       ></v-img>
     </v-avatar>
     <v-avatar v-else size="140" color="grey-darken-1"> </v-avatar>
-    <p class="mt-3" :class="[storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-5' : 'text-blue-grey-darken-4']">
+    <p class="mt-3" :class="[!storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-5' : 'text-blue-grey-darken-4']">
       {{ cast.name }}
     </p>
   </RouterLink>

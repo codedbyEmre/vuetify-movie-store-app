@@ -11,7 +11,7 @@
         variant="outlined"
         clearable
         hide-details
-        :bg-color="[storeThemeSwitch.darkMode ? 'blue-grey-darken-4' : 'white']"
+        :bg-color="[!storeThemeSwitch.darkMode ? 'blue-grey-darken-4' : 'white']"
       ></v-text-field>
     </v-col>
   </v-row>

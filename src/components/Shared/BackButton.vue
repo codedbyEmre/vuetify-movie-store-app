@@ -3,7 +3,7 @@
     <v-btn
       @click.stop="$router.back()"
       class="ma-0 mb-5"
-      :class="[storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']"
+      :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']"
     >
       <v-icon start icon="mdi-arrow-left"></v-icon>
       Back

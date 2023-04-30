@@ -1,6 +1,6 @@
 <template>
   <v-app :dark="false" id="inspire">
-    <v-navigation-drawer v-model="drawer" :class="[storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
+    <v-navigation-drawer v-model="drawer" :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
       <template v-slot:prepend>
         <v-list-item lines="two" prepend-avatar="@/assets/me.png" title="Emre Süslü" subtitle="Logged in"></v-list-item>
       </template>
@@ -21,21 +21,21 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar :class="[storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
+    <v-app-bar :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Vuetify Movie Store</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn icon id="mode-switcher" @click="storeThemeSwitch.darkMode = !storeThemeSwitch.darkMode">
+      <v-btn icon id="mode-switcher" @click="toggleThemeMode">
         <v-icon>
-          {{ storeThemeSwitch.darkMode ? 'mdi-weather-night' : 'mdi-weather-sunny' }}
+          {{ !storeThemeSwitch.darkMode ? 'mdi-weather-night' : 'mdi-weather-sunny' }}
         </v-icon>
       </v-btn>
     </v-app-bar>
 
-    <v-main :class="[storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-3' : 'bg-blue-grey-lighten-5']">
+    <v-main :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-3' : 'bg-blue-grey-lighten-5']">
       <div class="pa-6">
         <RouterView :key="$route.path" />
       </div>
@@ -50,6 +50,7 @@ import { useStoreMovies } from '@/stores/storeMovies';
 import { useStoreTvShows } from '@/stores/storeTvShows';
 import { useStorePeople } from '@/stores/storePeople';
 import { useStoreThemeSwitch } from '@/stores/storeThemeSwitch';
+import { onMounted } from 'vue';
 
 // store
 const storeMovies = useStoreMovies();
@@ -95,6 +96,16 @@ const items = ref([
 const handleClick = index => {
   items.value[index].click();
 };
+
+const toggleThemeMode = () => {
+  storeThemeSwitch.darkMode = !storeThemeSwitch.darkMode;
+  console.log(storeThemeSwitch.darkMode);
+  localStorage.setItem('darkMode', storeThemeSwitch.darkMode.toString());
+};
+
+onMounted(() => {
+  storeThemeSwitch.darkMode = localStorage.getItem('darkMode') === 'true';
+});
 </script>
 
 <style>

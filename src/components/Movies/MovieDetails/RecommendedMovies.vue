@@ -15,7 +15,7 @@
 
       <v-img v-else src="@/assets/noImage.png"></v-img>
 
-      <div class="pa-3" :class="[storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
+      <div class="pa-3" :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
         <div class="d-flex justify-space-between subtitle-2 mb-2">
           <div>
             {{ recommended?.release_date?.slice(0, 4) }}

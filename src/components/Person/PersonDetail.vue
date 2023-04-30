@@ -9,7 +9,7 @@
     <v-card
       min-height="300"
       class="person-detail-card"
-      :class="[storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']"
+      :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']"
     >
       <div class="pa-6 card-content">
         <div class="d-flex flex-sm-row flex-column mb-8">
@@ -24,31 +24,31 @@
           <v-avatar v-else color="grey-darken-1" size="220" rounded> </v-avatar>
           <div class="ml-sm-8 ml-0 mt-sm-0 mt-6">
             <div class="mb-1 info">
-              <span :class="[storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
+              <span :class="[!storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
                 >Name:
               </span>
               <span class="font-weight-bold">{{ storePeople.person.name ?? 'Unspecified' }}</span>
             </div>
             <p class="mb-1 info">
-              <span :class="[storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
+              <span :class="[!storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
                 >Date of Birth:
               </span>
               <span class="font-weight-bold">{{ storePeople.person.birthday ?? 'Unspecified' }}</span>
             </p>
             <p class="mb-1 info">
-              <span :class="[storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
+              <span :class="[!storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
                 >Place of Birth:
               </span>
               <span class="font-weight-bold">{{ storePeople.person.place_of_birth ?? 'Unspecified' }}</span>
             </p>
             <p class="mb-1 info">
-              <span :class="[storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
+              <span :class="[!storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
                 >Job:
               </span>
               <span class="font-weight-bold">{{ storePeople.person.known_for_department ?? 'Unspecified' }}</span>
             </p>
             <p class="info mb-1">
-              <span :class="[storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
+              <span :class="[!storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
                 >Gender:
               </span>
               <span class="font-weight-bold">{{ getGender }}</span>
@@ -57,14 +57,14 @@
               v-if="storePeople.person.imdb_id"
               :href="`https://www.imdb.com/name/${storePeople.person.imdb_id}`"
               class="pl-0 info"
-              :class="[storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
+              :class="[!storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']"
               variant="text"
               target="_blank"
               :ripple="false"
             >
               IMDB
               <v-icon
-                :color="[storeThemeSwitch.darkMode ? 'white' : 'blue-grey-darken-4']"
+                :color="[!storeThemeSwitch.darkMode ? 'white' : 'blue-grey-darken-4']"
                 class="ml-1"
                 ripple="false"
                 start
@@ -75,7 +75,7 @@
         </div>
         <div v-if="storePeople.person.biography" class="person-biography">
           <h1 class="mb-1">Biography</h1>
-          <p :class="[storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']">
+          <p :class="[!storeThemeSwitch.darkMode ? 'text-blue-grey-lighten-4' : 'text-blue-grey-darken-4']">
             {{ storePeople.person.biography }}
           </p>
         </div>
