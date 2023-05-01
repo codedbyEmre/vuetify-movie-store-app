@@ -6,10 +6,11 @@
       :lazy-src="`https://image.tmdb.org/t/p/original/${image.file_path}`"
       cover
       height="100%"
+      :alt="image?.file_path"
     >
     </v-img>
 
-    <v-img v-else src="@/assets/noImage.png"></v-img>
+    <v-img v-else src="@/assets/noImage.png" alt="no-image"></v-img>
   </v-card>
 </template>
 

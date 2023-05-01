@@ -18,7 +18,7 @@
               cover
               :src="`https://image.tmdb.org/t/p/original/${storePeople.person.profile_path}`"
               :lazy-src="`https://image.tmdb.org/t/p/original/${storePeople.person.profile_path}`"
-              alt="John"
+              :alt="storePeople?.person.name"
             ></v-img>
           </v-avatar>
           <v-avatar v-else color="grey-darken-1" size="220" rounded> </v-avatar>

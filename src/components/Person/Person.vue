@@ -8,10 +8,11 @@
           :lazy-src="`https://image.tmdb.org/t/p/original/${person.profile_path}`"
           cover
           height="100%"
+          :alt="person?.name"
         >
         </v-img>
 
-        <v-img v-else src="@/assets/noImage.png"></v-img>
+        <v-img v-else src="@/assets/noImage.png" alt="no-image"></v-img>
 
         <div class="pa-3" :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
           <div class="subtitle-1 truncate">

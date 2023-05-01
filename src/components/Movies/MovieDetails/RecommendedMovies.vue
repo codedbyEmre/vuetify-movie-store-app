@@ -7,13 +7,14 @@
         :lazy-src="`https://image.tmdb.org/t/p/original/${recommended.poster_path}`"
         cover
         height="100%"
+        :alt="recommended?.title"
       >
         <div class="pa-1 rounded-circle d-inline-block ml-2 mt-3 border" :class="`${voteColor}`">
           {{ recommended?.vote_average.toFixed(1) }}
         </div>
       </v-img>
 
-      <v-img v-else src="@/assets/noImage.png"></v-img>
+      <v-img v-else src="@/assets/noImage.png" alt="no-image"></v-img>
 
       <div class="pa-3" :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
         <div class="d-flex justify-space-between subtitle-2 mb-2">

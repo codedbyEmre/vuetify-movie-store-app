@@ -5,7 +5,7 @@
         cover
         :src="`https://image.tmdb.org/t/p/original/${cast?.profile_path}`"
         :lazy-src="`https://image.tmdb.org/t/p/original/${cast?.profile_path}`"
-        alt="John"
+        :alt="cast.name"
       ></v-img>
     </v-avatar>
     <v-avatar v-else size="140" color="grey-darken-1"> </v-avatar>
