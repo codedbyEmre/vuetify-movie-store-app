@@ -111,9 +111,9 @@ const storeLoading = useStoreLoading();
 const route = useRoute();
 
 storeMovies.getMovieDetail(route.params.id);
-storeMovies.getRecommendedMovies(route.params.id);
-storeMovies.getCastAndCrewByMovie(route.params.id);
-storeMovies.getVideosByMovie(route.params.id);
+// storeMovies.getRecommendedMovies(route.params.id);
+// storeMovies.getCastAndCrewByMovie(route.params.id);
+// storeMovies.getVideosByMovie(route.params.id);
 </script>
 
 <style scoped>

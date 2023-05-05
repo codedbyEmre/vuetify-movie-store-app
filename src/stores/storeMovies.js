@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { useStoreLoading } from '@/stores/storeLoading';
 
-let storeLoading;
+let storeLoading = null;
 
 const apiKey = import.meta.env.VITE_API_KEY;
 let movieBaseUrl = 'https://api.themoviedb.org/3/';
@@ -63,6 +63,9 @@ export const useStoreMovies = defineStore('storeMovies', {
           homepage: data.homepage,
           imdb: data.imdb_id
         };
+        this.getRecommendedMovies(id);
+        this.getCastAndCrewByMovie(id);
+        this.getVideosByMovie(id);
         storeLoading.loading.moviesDetail = true;
       } catch (err) {}
     },
