@@ -12,6 +12,7 @@
         clearable
         hide-details
         :bg-color="[!storeThemeSwitch.darkMode ? 'blue-grey-darken-4' : 'white']"
+        aria-label="search"
       ></v-text-field>
     </v-col>
   </v-row>

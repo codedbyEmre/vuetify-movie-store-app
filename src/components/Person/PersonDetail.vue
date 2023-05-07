@@ -61,6 +61,7 @@
               variant="text"
               target="_blank"
               :ripple="false"
+              aria-label="person detail button"
             >
               IMDB
               <v-icon

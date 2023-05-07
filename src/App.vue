@@ -28,7 +28,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon id="mode-switcher" @click="toggleThemeMode">
+      <v-btn icon id="mode-switcher" aria-label="theme toggle button" @click="toggleThemeMode">
         <v-icon>
           {{ !storeThemeSwitch.darkMode ? 'mdi-weather-night' : 'mdi-weather-sunny' }}
         </v-icon>

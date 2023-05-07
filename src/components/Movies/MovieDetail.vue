@@ -30,6 +30,7 @@
             variant="text"
             target="_blank"
             :ripple="false"
+            aria-label="imdb link button"
           >
             IMDB
             <v-icon class="ml-1" ripple="false" start icon="mdi-open-in-new"></v-icon>
