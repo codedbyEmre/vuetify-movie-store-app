@@ -45,7 +45,6 @@ export const useStoreMovies = defineStore('storeMovies', {
       } catch (err) {}
     },
     async getMovieDetail(id) {
-      console.log('id :>> ', id);
       storeLoading = useStoreLoading();
       storeLoading.loading.moviesDetail = false;
       try {
@@ -64,9 +63,9 @@ export const useStoreMovies = defineStore('storeMovies', {
           homepage: data.homepage,
           imdb: data.imdb_id
         };
-        // this.getRecommendedMovies(id);
-        // this.getCastAndCrewByMovie(id);
-        // this.getVideosByMovie(id);
+        this.getRecommendedMovies(id);
+        this.getCastAndCrewByMovie(id);
+        this.getVideosByMovie(id);
         storeLoading.loading.moviesDetail = true;
       } catch (err) {}
     },
