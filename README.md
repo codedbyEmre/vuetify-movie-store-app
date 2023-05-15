@@ -1,4 +1,14 @@
-# default
+## Stacks
+
+```
+Vue 3
+Composition Api
+Vue Router 4
+Vuetify 3
+Pinia
+Firebase 9
+Vite
+```
 
 ## Project setup
 
