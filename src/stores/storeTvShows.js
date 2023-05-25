@@ -3,9 +3,6 @@ import { useStoreLoading } from '@/stores/storeLoading';
 
 let storeLoading;
 
-const apiKey = import.meta.env.VITE_API_KEY;
-let tvShowsBaseUrl = 'https://api.themoviedb.org/3/';
-
 export const useStoreTvShows = defineStore('storeTvShows', {
   state: () => {
     return {
@@ -29,10 +26,14 @@ export const useStoreTvShows = defineStore('storeTvShows', {
       storeLoading.loading.tvShows = false;
       this.tvShows = [];
 
-      let url = `${tvShowsBaseUrl}discover/tv?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&page=${page}`;
+      let url = `${import.meta.env.VITE_API_URL}discover/tv?api_key=${
+        import.meta.env.VITE_API_KEY
+      }&language=en-US&sort_by=popularity.desc&page=${page}`;
 
       if (this.search) {
-        url = `${tvShowsBaseUrl}search/tv?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&query=${this.search}&page=${page}`;
+        url = `${import.meta.env.VITE_API_URL}search/tv?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=en-US&sort_by=popularity.desc&query=${this.search}&page=${page}`;
       }
 
       try {
@@ -47,7 +48,9 @@ export const useStoreTvShows = defineStore('storeTvShows', {
       storeLoading = useStoreLoading();
       storeLoading.loading.tvShowDetail = false;
       try {
-        const res = await fetch(`${tvShowsBaseUrl}tv/${id}?api_key=${apiKey}&language=en-US`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}tv/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`
+        );
         const data = await res.json();
         this.tvShowDetails = {
           title: data.name,
@@ -65,14 +68,20 @@ export const useStoreTvShows = defineStore('storeTvShows', {
     },
     async getRecommendedTvShows(id) {
       try {
-        const res = await fetch(`${tvShowsBaseUrl}tv/${id}/recommendations?api_key=${apiKey}&language=en-US`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}tv/${id}/recommendations?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&language=en-US`
+        );
         const data = await res.json();
         this.recommendedTvShows = data.results;
       } catch (err) {}
     },
     async getCastAndCrewByTvShow(id) {
       try {
-        const res = await fetch(`${tvShowsBaseUrl}tv/${id}/credits?api_key=${apiKey}`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}tv/${id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+        );
         const data = await res.json();
         this.tvShowCast = data.cast;
         this.tvShowCrew = data.crew;
@@ -100,7 +109,9 @@ export const useStoreTvShows = defineStore('storeTvShows', {
     },
     async getVideosByTvShow(id) {
       try {
-        const res = await fetch(`${tvShowsBaseUrl}tv/${id}/videos?api_key=${apiKey}&language=en-US`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}tv/${id}/videos?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`
+        );
         const data = await res.json();
         this.tvShowVideos = data.results;
       } catch (err) {}

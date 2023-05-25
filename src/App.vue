@@ -99,7 +99,6 @@ const handleClick = index => {
 
 const toggleThemeMode = () => {
   storeThemeSwitch.darkMode = !storeThemeSwitch.darkMode;
-  console.log(storeThemeSwitch.darkMode);
   localStorage.setItem('darkMode', storeThemeSwitch.darkMode.toString());
 };
 
