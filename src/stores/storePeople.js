@@ -3,9 +3,6 @@ import { useStoreLoading } from '@/stores/storeLoading';
 
 let storeLoading;
 
-const apiKey = import.meta.env.VITE_API_KEY;
-let movieBaseUrl = 'https://api.themoviedb.org/3/';
-
 export const useStorePeople = defineStore('storePeople', {
   state: () => {
     return {
@@ -24,10 +21,14 @@ export const useStorePeople = defineStore('storePeople', {
       storeLoading.loading.people = false;
       this.people = [];
 
-      let url = `${movieBaseUrl}/person/popular?api_key=${apiKey}&language=en-US&include_adult=false&page=${page}`;
+      let url = `${import.meta.env.VITE_API_URL}/person/popular?api_key=${
+        import.meta.env.VITE_API_KEY
+      }&language=en-US&include_adult=false&page=${page}`;
 
       if (this.search) {
-        url = `${movieBaseUrl}search/person?api_key=${apiKey}&query=${this.search}&language=en-USinclude_adult=false&&page=${page}`;
+        url = `${import.meta.env.VITE_API_URL}search/person?api_key=${import.meta.env.VITE_API_KEY}&query=${
+          this.search
+        }&language=en-USinclude_adult=false&&page=${page}`;
       }
 
       try {
@@ -42,7 +43,11 @@ export const useStorePeople = defineStore('storePeople', {
       storeLoading = useStoreLoading();
       storeLoading.loading.personDetail = false;
       try {
-        const res = await fetch(`${movieBaseUrl}person/${id}?api_key=${apiKey}&include_adult=false&language=en-US`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}person/${id}?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&include_adult=false&language=en-US`
+        );
         const data = await res.json();
         this.person = data;
         storeLoading.loading.personDetail = true;
@@ -52,7 +57,9 @@ export const useStorePeople = defineStore('storePeople', {
       storeLoading = useStoreLoading();
       storeLoading.loading.personDetail = false;
       try {
-        const res = await fetch(`${movieBaseUrl}person/${id}/images?api_key=${apiKey}`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}person/${id}/images?api_key=${import.meta.env.VITE_API_KEY}`
+        );
         const data = await res.json();
         this.personImages = data.profiles;
         storeLoading.loading.personDetail = true;
@@ -61,7 +68,9 @@ export const useStorePeople = defineStore('storePeople', {
     async getTvShowsByPerson(id) {
       try {
         const res = await fetch(
-          `${movieBaseUrl}person/${id}?api_key=${apiKey}&language=en-US&append_to_response=tv_credits`
+          `${import.meta.env.VITE_API_URL}person/${id}?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&language=en-US&append_to_response=tv_credits`
         );
         const data = await res.json();
         this.tvShowsByPerson = data.tv_credits.cast;

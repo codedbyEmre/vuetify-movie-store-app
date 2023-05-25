@@ -3,9 +3,6 @@ import { useStoreLoading } from '@/stores/storeLoading';
 
 let storeLoading = null;
 
-const apiKey = import.meta.env.VITE_API_KEY;
-let movieBaseUrl = 'https://api.themoviedb.org/3/';
-
 export const useStoreMovies = defineStore('storeMovies', {
   state: () => {
     return {
@@ -30,10 +27,14 @@ export const useStoreMovies = defineStore('storeMovies', {
       storeLoading.loading.movies = false;
       this.movies = [];
 
-      let url = `${movieBaseUrl}discover/movie?api_key=${apiKey}&language=en-US&include_adult=false&page=${page}`;
+      let url = `${import.meta.env.VITE_API_URL}discover/movie?api_key=${
+        import.meta.env.VITE_API_KEY
+      }&language=en-US&include_adult=false&page=${page}`;
 
       if (this.search) {
-        url = `${movieBaseUrl}search/movie?api_key=${apiKey}&language=en-US&include_adult=false&query=${this.search}&page=${page}`;
+        url = `${import.meta.env.VITE_API_URL}search/movie?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=en-US&include_adult=false&query=${this.search}&page=${page}`;
       }
 
       try {
@@ -48,7 +49,11 @@ export const useStoreMovies = defineStore('storeMovies', {
       storeLoading = useStoreLoading();
       storeLoading.loading.moviesDetail = false;
       try {
-        const res = await fetch(`${movieBaseUrl}movie/${id}?api_key=${apiKey}&include_adult=false&language=en-US`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}movie/${id}?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&include_adult=false&language=en-US`
+        );
         const data = await res.json();
         this.moviesDetails = {
           title: data.title,
@@ -71,14 +76,20 @@ export const useStoreMovies = defineStore('storeMovies', {
     },
     async getRecommendedMovies(id) {
       try {
-        const res = await fetch(`${movieBaseUrl}movie/${id}/recommendations?api_key=${apiKey}&language=en-US`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}movie/${id}/recommendations?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&language=en-US`
+        );
         const data = await res.json();
         this.recommendedMovies = data.results;
       } catch (err) {}
     },
     async getCastAndCrewByMovie(id) {
       try {
-        const res = await fetch(`${movieBaseUrl}movie/${id}/credits?api_key=${apiKey}`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}movie/${id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+        );
         const data = await res.json();
         this.movieCast = data.cast;
         this.movieCrew = data.crew;
@@ -106,14 +117,20 @@ export const useStoreMovies = defineStore('storeMovies', {
     },
     async getVideosByMovie(id) {
       try {
-        const res = await fetch(`${movieBaseUrl}movie/${id}/videos?api_key=${apiKey}&language=en-US`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}movie/${id}/videos?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`
+        );
         const data = await res.json();
         this.movieVideos = data.results;
       } catch (err) {}
     },
     async getMoviesByPerson(id) {
       try {
-        const res = await fetch(`${movieBaseUrl}discover/movie?api_key=${apiKey}&with_people=${id}&language=en-US`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}discover/movie?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&with_people=${id}&language=en-US`
+        );
         const data = await res.json();
         this.moviesByPerson = data.results;
       } catch (err) {}
