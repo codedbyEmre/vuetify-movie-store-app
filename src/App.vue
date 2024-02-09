@@ -24,7 +24,13 @@
     <v-app-bar :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-4' : 'white']">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Vuetify Movie Store</v-toolbar-title>
+      <RouterLink
+        to="/"
+        class="text-decoration-none"
+        :class="[!storeThemeSwitch.darkMode ? 'text-white' : 'text-black']"
+      >
+        <v-toolbar-title>Vuetify Movie Store</v-toolbar-title>
+      </RouterLink>
 
       <v-spacer></v-spacer>
 
