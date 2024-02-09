@@ -37,7 +37,9 @@
 
     <v-main :class="[!storeThemeSwitch.darkMode ? 'bg-blue-grey-darken-3' : 'bg-blue-grey-lighten-5']">
       <div class="pa-6">
-        <RouterView :key="$route.path" />
+        <v-scroll-y-transition mode="in" hide-on-leave="true">
+          <RouterView :key="$route.path" />
+        </v-scroll-y-transition>
       </div>
     </v-main>
   </v-app>

@@ -19,7 +19,7 @@
           <span>
             <v-icon size="20" color="yellow" icon="mdi-star" class="mr-1"></v-icon>
           </span>
-          <span class="vote-average"> {{ storeMovies.moviesDetails.voteAvg.toFixed(1) }} </span>
+          <span class="vote-average"> {{ storeMovies.moviesDetails.voteAvg?.toFixed(1) }} </span>
           <span class="mx-3">|</span>
           <span class="run-time"> {{ storeMovies.moviesDetails.runTime }}m </span>
           <span class="mx-3">|</span>
