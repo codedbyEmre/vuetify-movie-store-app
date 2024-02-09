@@ -12,12 +12,12 @@
         <TvShow v-for="tvShow in storeTvShows.tvShows" :key="tvShow.id" :tvShow="tvShow" />
 
         <!-- If there is no tv Shows found -->
-        <div v-if="!storeTvShows.tvShows.length" class="w-100 text-center text-h5 mt-5">No tv shows found...</div>
+        <div v-if="!storeTvShows.tvShows?.length" class="w-100 text-center text-h5 mt-5">No tv shows found...</div>
       </template>
     </v-row>
 
     <!-- Pagination -->
-    <div v-if="storeTvShows.tvShows.length" class="text-center mt-5">
+    <div v-if="storeTvShows.tvShows?.length" class="text-center mt-5">
       <Pagination :store="storeTvShows" type="tvShows" />
     </div>
   </div>

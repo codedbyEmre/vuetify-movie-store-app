@@ -12,12 +12,12 @@
         <Person v-for="person in storePeople.people" :person="person" :key="person.id" />
 
         <!-- If there is no person found -->
-        <div v-if="!storePeople.people.length" class="w-100 text-center text-h5 mt-5">No people found...</div>
+        <div v-if="!storePeople.people?.length" class="w-100 text-center text-h5 mt-5">No people found...</div>
       </template>
     </v-row>
 
     <!-- Pagination -->
-    <div v-if="storePeople.people.length" class="text-center mt-5">
+    <div v-if="storePeople.people?.length" class="text-center mt-5">
       <Pagination :store="storePeople" type="people" />
     </div>
   </div>
